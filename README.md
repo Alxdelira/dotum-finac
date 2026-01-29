@@ -200,6 +200,6 @@ GET /conta/valor-total
 
 <p align="center">
   <a href="https://portfolioalxdelira.vercel.app/" target="_blank" rel="noreferrer">
-    <img src="./.github/assets/footer.png" alt="Banner linking to the portfolio" width="100%" />
+    <img src="https://github.com/Alxdelira/Alxdelira/raw/main/.github/assets/footer.png" alt="Banner linking to the portfolio" width="100%" />
   </a>
 </p>
