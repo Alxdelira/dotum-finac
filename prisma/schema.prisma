@@ -1,0 +1,32 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  engineType   = "binary"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model EntradaDeConta {
+  id               String        @id @default(ulid())
+  tipo             TipoDaConta
+  status           StatusDaConta
+  descricao        String
+  valor            Decimal       @db.Decimal(10, 2)
+  dataDeVencimento DateTime
+  dataDePagamento  DateTime?
+  criadoEm         DateTime      @default(now())
+  atualizadoEm     DateTime      @updatedAt
+}
+
+enum StatusDaConta {
+  PENDENTE
+  PAGO
+}
+
+enum TipoDaConta {
+  RECEBER
+  PAGAR
+}

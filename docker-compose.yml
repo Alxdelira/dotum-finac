@@ -1,0 +1,41 @@
+services:
+  dotum-db:
+    restart: unless-stopped
+    container_name: "dotum-db"
+    image: mysql:latest
+    ports:
+      - "${DB_EXPOSE_PORT}:3306"
+    volumes:
+      - data_dotum:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=America/Porto_Velho
+      - LANG=${LANG}
+    networks:
+      - dotum-network
+  dotum-api:
+    restart: unless-stopped
+    container_name: "dotum-api"
+    depends_on:
+      - dotum-db
+    build:
+      context: .
+      args:
+        DATABASE_URL: ${DATABASE_URL}
+    environment:
+      - PORT=${PORT}
+      - NODE_ENV=production
+      - DEBUGLOG=true
+      - DATABASE_URL=${DATABASE_URL}
+    ports:
+      - "3077:3077"
+    networks:
+      - dotum-network
+
+volumes:
+  data_dotum:
+
+networks:
+  dotum-network:
+    driver: bridge
