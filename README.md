@@ -121,19 +121,19 @@ networks:
 
 O Dockerfile da API (dentro de dotum-api/) faz:
 
-Instala dependências.
+* Instala dependências.
 
-Gera Prisma Client.
+* Gera Prisma Client.
 
-Build do Nest.
+* Build do Nest.
 
-Roda prisma migrate deploy e sobe a aplicação.
+* Roda prisma migrate deploy e sobe a aplicação.
 
 ## Como subir o projeto com Docker
 Clonar o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/dotum-finac.git
+git clone https://github.com/Alxdelira/dotum-finac
 cd dotum-finac
 ```
 Criar o .env na raiz (ver seção de Configuração de ambiente).
